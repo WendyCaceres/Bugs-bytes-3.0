@@ -5,6 +5,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import android.app.DatePickerDialog
+import android.widget.EditText
+import java.util.Calendar
+
 
 class Formulario1 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,5 +20,23 @@ class Formulario1 : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val dateEditText: EditText = findViewById(R.id.textInputEditTextDate)
+        dateEditText.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            val year = calendar.get(Calendar.YEAR)
+            val month = calendar.get(Calendar.MONTH)
+            val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+            val datePickerDialog = DatePickerDialog(this, { _, selectedYear, selectedMonth, selectedDay ->
+                // Actualiza el EditText con la fecha seleccionada
+                val formattedDate = String.format("%02d/%02d/%04d", selectedDay, selectedMonth + 1, selectedYear)
+                dateEditText.setText(formattedDate)
+            }, year, month, day)
+
+            datePickerDialog.show()
+        }
     }
+
+
+
 }
