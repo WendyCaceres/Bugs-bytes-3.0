@@ -23,6 +23,9 @@
             android:name=".PantallaPrincipal"
             android:exported="true" />
         <activity
+            android:name=".TercerFormularioActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true" >
             <intent-filter>
