@@ -71,7 +71,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/bienvenida"
         app:layout_constraintEnd_toEndOf="@+id/bienvenida"
         app:layout_constraintTop_toTopOf="@+id/bienvenida"
-        android:src="@color/black"
+        android:src="@drawable/botonApp"
         android:layout_marginEnd="10dp">
 
 
@@ -101,15 +101,15 @@
         app:layout_constraintEnd_toEndOf="@+id/metaMensual"
         android:layout_marginTop="5dp">
     </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
+    <ImageButton
         android:layout_width="40dp"
         android:layout_height="40dp"
         app:layout_constraintEnd_toEndOf="@+id/agregarGastos"
         app:layout_constraintBottom_toBottomOf="@+id/agregarGastos"
-        app:cardBackgroundColor="@color/black"
-        android:elevation="2dp">
-    </androidx.cardview.widget.CardView>
+        android:elevation="2dp"
+        android:background="@drawable/botonAgregar"
+        >
+    </ImageButton>
 
     <TextView
         android:id="@+id/pasajes"
@@ -133,26 +133,38 @@
         android:elevation="2dp"
         app:cardCornerRadius="30dp"
         android:layout_marginTop="5dp">
+        <EditText
+            android:id="@+id/EditTextPasajes"
+            android:layout_width="150dp"
+            android:layout_height="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/pasajes"
+            app:layout_constraintStart_toStartOf="@+id/pasajes"
+            app:cardBackgroundColor="@color/white"
+            android:elevation="2dp"
+            app:cardCornerRadius="30dp"
+            android:layout_marginTop="5dp">
+        </EditText>
     </androidx.cardview.widget.CardView>
 
-    <ImageView
+    <ImageButton
         android:id="@+id/eliminarpasajes"
         android:layout_width="25dp"
         android:layout_height="25dp"
         app:layout_constraintTop_toTopOf="@+id/cardViewPasajes"
         app:layout_constraintStart_toEndOf="@+id/cardViewPasajes"
-        android:background="@color/black"
+        android:background="@drawable/botonEliminar"
         android:layout_marginStart="20dp">
-    </ImageView>
-    <ImageView
+    </ImageButton>
+
+    <ImageButton
         android:id="@+id/editarpasaje"
         android:layout_width="25dp"
         android:layout_height="25dp"
         app:layout_constraintStart_toEndOf="@+id/eliminarpasajes"
         app:layout_constraintTop_toTopOf="@+id/cardViewPasajes"
         android:layout_marginLeft="15dp"
-        android:background="@color/black">
-    </ImageView>
+        android:background="@drawable/botonEditar">
+    </ImageButton>
     <TextView
         android:id="@+id/comida"
         android:layout_width="wrap_content"
@@ -174,25 +186,36 @@
         android:elevation="2dp"
         app:cardCornerRadius="30dp"
         android:layout_marginTop="5dp">
+        <EditText
+            android:id="@+id/EditTextComida"
+            android:layout_width="150dp"
+            android:layout_height="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/pasajes"
+            app:layout_constraintStart_toStartOf="@+id/pasajes"
+            app:cardBackgroundColor="@color/white"
+            android:elevation="2dp"
+            app:cardCornerRadius="30dp"
+            android:layout_marginTop="5dp">
+        </EditText>
     </androidx.cardview.widget.CardView>
-    <ImageView
+    <ImageButton
         android:id="@+id/eliminarComida"
         android:layout_width="25dp"
         android:layout_height="25dp"
         app:layout_constraintTop_toTopOf="@+id/cardViewComida"
         app:layout_constraintStart_toEndOf="@+id/cardViewComida"
-        android:background="@color/black"
+        android:background="@drawable/botonEliminar"
         android:layout_marginStart="20dp">
-    </ImageView>
-    <ImageView
+    </ImageButton>
+    <ImageButton
         android:id="@+id/editarComida"
         android:layout_width="25dp"
         android:layout_height="25dp"
         app:layout_constraintStart_toEndOf="@+id/eliminarComida"
         app:layout_constraintTop_toTopOf="@+id/cardViewComida"
         android:layout_marginLeft="15dp"
-        android:background="@color/black">
-    </ImageView>
+        android:background="@drawable/botonEditar">
+    </ImageButton>
     <TextView
         android:id="@+id/gimnasio"
         android:layout_width="wrap_content"
@@ -214,25 +237,36 @@
         android:elevation="2dp"
         app:cardCornerRadius="30dp"
         android:layout_marginTop="5dp">
+        <EditText
+            android:id="@+id/EditTextGimnasio"
+            android:layout_width="150dp"
+            android:layout_height="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/pasajes"
+            app:layout_constraintStart_toStartOf="@+id/pasajes"
+            app:cardBackgroundColor="@color/white"
+            android:elevation="2dp"
+            app:cardCornerRadius="30dp"
+            android:layout_marginTop="5dp">
+        </EditText>
     </androidx.cardview.widget.CardView>
-    <ImageView
+    <ImageButton
         android:id="@+id/editarGimnasio"
         android:layout_width="25dp"
         android:layout_height="25dp"
         app:layout_constraintStart_toEndOf="@+id/eliminarGimnasio"
         app:layout_constraintTop_toTopOf="@+id/cardViewGimnasio"
         android:layout_marginLeft="15dp"
-        android:background="@color/black">
-    </ImageView>
-    <ImageView
+        android:background="@drawable/botonEditar">
+    </ImageButton>
+    <ImageButton
         android:id="@+id/eliminarGimnasio"
         android:layout_width="25dp"
         android:layout_height="25dp"
         app:layout_constraintTop_toTopOf="@+id/cardViewGimnasio"
         app:layout_constraintStart_toEndOf="@+id/cardViewGimnasio"
-        android:background="@color/black"
+        android:background="@drawable/botonEliminar"
         android:layout_marginStart="20dp">
-    </ImageView>
+    </ImageButton>
     <TextView
         android:id="@+id/parqueo"
         android:layout_width="wrap_content"
@@ -253,25 +287,36 @@
         android:elevation="2dp"
         app:cardCornerRadius="30dp"
         android:layout_marginTop="5dp">
+        <EditText
+            android:id="@+id/EditTextParqueo"
+            android:layout_width="150dp"
+            android:layout_height="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/pasajes"
+            app:layout_constraintStart_toStartOf="@+id/pasajes"
+            app:cardBackgroundColor="@color/white"
+            android:elevation="2dp"
+            app:cardCornerRadius="30dp"
+            android:layout_marginTop="5dp">
+        </EditText>
     </androidx.cardview.widget.CardView>
-    <ImageView
+    <ImageButton
         android:id="@+id/eliminarParqueo"
         android:layout_width="25dp"
         android:layout_height="25dp"
         app:layout_constraintTop_toTopOf="@+id/cardViewParqueo"
         app:layout_constraintStart_toEndOf="@+id/cardViewParqueo"
-        android:background="@color/black"
+        android:background="@drawable/botonEliminar"
         android:layout_marginStart="20dp">
-    </ImageView>
-    <ImageView
+    </ImageButton>
+    <ImageButton
         android:id="@+id/editarParqueo"
         android:layout_width="25dp"
         android:layout_height="25dp"
         app:layout_constraintStart_toEndOf="@+id/eliminarParqueo"
         app:layout_constraintTop_toTopOf="@+id/cardViewParqueo"
         android:layout_marginLeft="15dp"
-        android:background="@color/black">
-    </ImageView>
+        android:background="@drawable/botonEditar">
+    </ImageButton>
 
 
 
