@@ -21,7 +21,10 @@ class Formulario1 : AppCompatActivity() {
             insets
         }
         val dateEditText: EditText = findViewById(R.id.textInputEditTextDate)
-        dateEditText.setOnClickListener {
+        setupDatePicker(dateEditText)
+    }
+    private fun setupDatePicker(editText: EditText) {
+        editText.setOnClickListener {
             val calendar = Calendar.getInstance()
             val year = calendar.get(Calendar.YEAR)
             val month = calendar.get(Calendar.MONTH)
@@ -30,13 +33,10 @@ class Formulario1 : AppCompatActivity() {
             val datePickerDialog = DatePickerDialog(this, { _, selectedYear, selectedMonth, selectedDay ->
                 // Actualiza el EditText con la fecha seleccionada
                 val formattedDate = String.format("%02d/%02d/%04d", selectedDay, selectedMonth + 1, selectedYear)
-                dateEditText.setText(formattedDate)
+                editText.setText(formattedDate)
             }, year, month, day)
 
             datePickerDialog.show()
         }
     }
-
-
-
 }
