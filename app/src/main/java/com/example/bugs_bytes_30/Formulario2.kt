@@ -18,6 +18,16 @@ class Formulario2 : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_formulario2)
 
+        val buttonSiguiente=findViewById<Button>(R.id.button_siguiente)
+        buttonSiguiente.setOnClickListener {
+            val intent = Intent(this, Formulario3::class.java)
+            startActivity(intent)
+        }
+        val buttonAtras: Button = findViewById(R.id.button_atras)
+        buttonAtras.setOnClickListener {
+            val intent = Intent(this, Formulario1::class.java)
+            startActivity(intent)
+        }
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { view, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             view.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -27,15 +37,6 @@ class Formulario2 : AppCompatActivity() {
         val dateEditText: EditText = findViewById(R.id.textInputEditTextDate)
         setupDatePicker(dateEditText)
 
-        // Configurar el botón "ATRÁS"
-        val buttonAtras: Button = findViewById(R.id.button_atras)
-        buttonAtras.setOnClickListener {
-            // Crear un Intent para ir a Formulario1
-            val intent = Intent(this, Formulario1::class.java)
-            startActivity(intent)
-            // Finalizar esta actividad si no quieres mantenerla en el stack
-            finish()
-        }
     }
 
     private fun setupDatePicker(editText: EditText) {
