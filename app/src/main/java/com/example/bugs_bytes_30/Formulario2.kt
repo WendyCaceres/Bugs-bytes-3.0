@@ -27,13 +27,16 @@ class Formulario2 : AppCompatActivity() {
         val dateEditText: EditText = findViewById(R.id.textInputEditTextDate)
         setupDatePicker(dateEditText)
 
-        // Configurar el botón "ATRÁS"
-        val buttonAtras: Button = findViewById(R.id.button_atras)
-        buttonAtras.setOnClickListener {
-            // Crear un Intent para ir a Formulario1
+        val buttonSiguiente: Button = findViewById(R.id.button_siguiente)
+        buttonSiguiente.setOnClickListener {
             val intent = Intent(this, Formulario1::class.java)
             startActivity(intent)
-            // Finalizar esta actividad si no quieres mantenerla en el stack
+        }
+
+        val buttonAtras: Button = findViewById(R.id.button_atras)
+        buttonAtras.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
             finish()
         }
     }
@@ -46,7 +49,6 @@ class Formulario2 : AppCompatActivity() {
             val day = calendar.get(Calendar.DAY_OF_MONTH)
 
             val datePickerDialog = DatePickerDialog(this, { _, selectedYear, selectedMonth, selectedDay ->
-                // Actualiza el EditText con la fecha seleccionada
                 val formattedDate = String.format("%02d/%02d/%04d", selectedDay, selectedMonth + 1, selectedYear)
                 editText.setText(formattedDate)
             }, year, month, day)
