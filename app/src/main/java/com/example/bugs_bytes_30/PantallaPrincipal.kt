@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import java.util.*
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class PantallaPrincipal : AppCompatActivity() {
     private lateinit var tvUserName: TextView
@@ -21,6 +20,9 @@ class PantallaPrincipal : AppCompatActivity() {
     private lateinit var rvHistory: RecyclerView
     private lateinit var etSearchDate: EditText
     private lateinit var btnSearch: ImageButton
+    private lateinit var btnHome: ImageButton
+    private lateinit var btnExpensesNav: ImageButton
+    private lateinit var btnProfile: ImageButton
 
     private var totalSavings = 1500.0
     private var totalExpenses = 500.0
@@ -48,6 +50,9 @@ class PantallaPrincipal : AppCompatActivity() {
         rvHistory = findViewById(R.id.rvHistory)
         etSearchDate = findViewById(R.id.etSearchDate)
         btnSearch = findViewById(R.id.btnSearch)
+        btnHome = findViewById(R.id.btnHome)
+        btnExpensesNav = findViewById(R.id.btnExpenses)
+        btnProfile = findViewById(R.id.btnProfile)
 
         rvHistory.layoutManager = LinearLayoutManager(this)
         rvHistory.adapter = HistoryAdapter(filteredHistoryList)
@@ -87,36 +92,31 @@ class PantallaPrincipal : AppCompatActivity() {
                 filterHistoryByDate(searchDate)
             }
         }
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-        bottomNavigationView.setOnItemSelectedListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.nav_home -> {
 
-                    true
-                }
-                R.id.nav_expenses -> {
-                    val intent = Intent(this, PantallaUsuarioActivity::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
-                    startActivity(intent)
-                    true
-                }
-                R.id.nav_profile -> {
+        btnHome.setOnClickListener {
+            val intent = Intent(this, PantallaPrincipal::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+            startActivity(intent)
+        }
 
-                    val intent = Intent(this, PantallaUsuarioActivity::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
-                    startActivity(intent)
-                    true
-                }
-                else -> false
-            }
+        btnExpensesNav.setOnClickListener {
+            val intent = Intent(this, Formulario2::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+            startActivity(intent)
+        }
+
+        btnProfile.setOnClickListener {
+            val intent = Intent(this, PantallaUsuarioActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+            startActivity(intent)
         }
     }
+
     private fun updateStatistics() {
         tvExpenses.text = "Bs. ${totalExpenses}"
         tvSavings.text = "Bs. ${totalSavings}"
         val total = totalSavings - totalExpenses
         tvTotalAmount.text = "Total\n${"%.2f".format(total)} Bs"
-
         val maxAmount = 1000.0
         val progress = if (totalExpenses > maxAmount) 100 else (totalExpenses / maxAmount * 100).toInt()
         progressBar.progress = progress
@@ -124,18 +124,15 @@ class PantallaPrincipal : AppCompatActivity() {
 
     private fun filterHistoryByDate(date: String) {
         val formattedDate = date.trim()
-
         filteredHistoryList = historyList.filter {
             val historyDate = it.substring(0, 10)
             historyDate == formattedDate
         }.toMutableList()
-
         rvHistory.adapter?.notifyDataSetChanged()
     }
 
     inner class HistoryAdapter(private val history: List<String>) :
         RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
-
         inner class HistoryViewHolder(itemView: TextView) : RecyclerView.ViewHolder(itemView) {
             val tvItem: TextView = itemView
         }

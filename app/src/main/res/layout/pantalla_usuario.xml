@@ -14,7 +14,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:orientation="vertical"
-        android:background="@drawable/_qk8wlcenfohssiqk9kogxu484s">
+        android:background="@drawable/asistentefinanciero">
     </LinearLayout>
     <ImageButton
         android:layout_width="130dp"
@@ -216,23 +216,29 @@
         android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@color/black">
+        android:background="#9000FF">
 
         <ImageButton
+            android:id="@+id/btnHome"
             android:layout_width="140dp"
             android:layout_height="match_parent"
             android:src="@drawable/home_24dp_e8eaed_fill0_wght400_grad0_opsz24"
-            android:contentDescription="Editar parqueo" />
+            android:contentDescription="Editar parqueo"
+            android:background="#9000FF"/>
         <ImageButton
+            android:id="@+id/btnExpenses"
             android:layout_width="140dp"
             android:layout_height="match_parent"
             android:src="@drawable/analytics_24dp_e8eaed_fill0_wght400_grad0_opsz24"
-            android:contentDescription="Editar parqueo" />
+            android:contentDescription="Editar parqueo"
+            android:background="#9000FF"/>
         <ImageButton
+            android:id="@+id/btnProfile"
             android:layout_width="140dp"
             android:layout_height="match_parent"
             android:src="@drawable/person_24dp_e8eaed_fill0_wght400_grad0_opsz24"
-            android:contentDescription="Editar parqueo" />
+            android:contentDescription="Editar parqueo"
+            android:background="#9000FF"/>
     </LinearLayout>
         
     
