@@ -39,9 +39,9 @@ class Formulario1 : AppCompatActivity() {
 
             datePickerDialog.show()
         }
-        val pantallaPrincipal = findViewById<Button>(R.id.button_siguiente)
-        pantallaPrincipal.setOnClickListener {
-            val intent = Intent(this, PantallaPrincipal::class.java)
+        val botonSiguiente = findViewById<Button>(R.id.button_siguiente)
+        botonSiguiente.setOnClickListener {
+            val intent = Intent(this, Formulario2::class.java)
             startActivity(intent)
         }
     }

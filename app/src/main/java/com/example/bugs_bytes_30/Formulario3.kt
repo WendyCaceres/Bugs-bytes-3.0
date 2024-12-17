@@ -5,9 +5,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
@@ -15,9 +12,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.marginEnd
 import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
 
 class Formulario3 : AppCompatActivity() {
 
@@ -31,6 +26,16 @@ class Formulario3 : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             view.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+        val buttonSiguiente=findViewById<Button>(R.id.botton_terminar)
+        buttonSiguiente.setOnClickListener {
+            val intent = Intent(this, PantallaPrincipal::class.java)
+            startActivity(intent)
+        }
+        val buttonAtras: Button = findViewById(R.id.button_atras)
+        buttonAtras.setOnClickListener {
+            val intent = Intent(this, Formulario1::class.java)
+            startActivity(intent)
         }
         val textInputEditText: TextInputEditText = findViewById(R.id.textInputEditText)
         val addCategoryButton: Button = findViewById(R.id.addCategoryButton)
@@ -70,14 +75,12 @@ class Formulario3 : AppCompatActivity() {
             )
         }
 
-        // Crear botón para editar
         val editButton = ImageButton(this).apply {
             setImageResource(android.R.drawable.ic_menu_edit)
             setBackgroundColor(resources.getColor(android.R.color.transparent))
             setOnClickListener { editCategory(categoryTextView) }
         }
 
-        // Crear botón para eliminar
         val deleteButton = ImageButton(this).apply {
             setImageResource(android.R.drawable.ic_menu_delete)
             setBackgroundColor(resources.getColor(android.R.color.transparent))
