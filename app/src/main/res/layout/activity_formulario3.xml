@@ -33,7 +33,7 @@
             android:layout_height="90dp"
             android:layout_marginStart="24dp"
             android:elevation="8dp"
-            android:src="@drawable/ic_launcher_foreground" />
+            android:src="@drawable/finanza" />
 
     </LinearLayout>
     <LinearLayout

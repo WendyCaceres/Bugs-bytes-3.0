@@ -87,17 +87,29 @@ class PantallaPrincipal : AppCompatActivity() {
                 filterHistoryByDate(searchDate)
             }
         }
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        bottomNavigationView.setOnItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.nav_home -> {
 
-    }
+                    true
+                }
+                R.id.nav_expenses -> {
+                    val intent = Intent(this, PantallaUsuarioActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+                    startActivity(intent)
+                    true
+                }
+                R.id.nav_profile -> {
 
-    private fun showExpensesScreen() {
-        val intent = Intent(this, Formulario2::class.java)
-        startActivity(intent)
-    }
-
-    private fun showProfileScreen() {
-        val intent = Intent(this, Formulario3::class.java)
-        startActivity(intent)
+                    val intent = Intent(this, PantallaUsuarioActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+                    startActivity(intent)
+                    true
+                }
+                else -> false
+            }
+        }
     }
     private fun updateStatistics() {
         tvExpenses.text = "Bs. ${totalExpenses}"
