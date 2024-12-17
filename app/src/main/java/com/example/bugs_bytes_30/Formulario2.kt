@@ -25,7 +25,7 @@ class Formulario2 : AppCompatActivity() {
         }
         val buttonAtras: Button = findViewById(R.id.button_atras)
         buttonAtras.setOnClickListener {
-            val intent = Intent(this, Formulario1::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { view, insets ->
@@ -47,7 +47,6 @@ class Formulario2 : AppCompatActivity() {
             val day = calendar.get(Calendar.DAY_OF_MONTH)
 
             val datePickerDialog = DatePickerDialog(this, { _, selectedYear, selectedMonth, selectedDay ->
-                // Actualiza el EditText con la fecha seleccionada
                 val formattedDate = String.format("%02d/%02d/%04d", selectedDay, selectedMonth + 1, selectedYear)
                 editText.setText(formattedDate)
             }, year, month, day)

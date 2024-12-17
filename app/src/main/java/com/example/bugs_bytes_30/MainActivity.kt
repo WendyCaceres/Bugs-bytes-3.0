@@ -18,8 +18,8 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val btnNavigateToFormulario2 = findViewById<Button>(R.id.button_siguiente)
-        btnNavigateToFormulario2.setOnClickListener {
+        val pantallaPrincipal = findViewById<Button>(R.id.button_siguiente)
+        pantallaPrincipal.setOnClickListener {
             val intent = Intent(this, Formulario2::class.java)
             startActivity(intent)
         }

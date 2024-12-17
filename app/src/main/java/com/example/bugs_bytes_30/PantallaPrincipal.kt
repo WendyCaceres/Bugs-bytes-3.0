@@ -87,31 +87,7 @@ class PantallaPrincipal : AppCompatActivity() {
                 filterHistoryByDate(searchDate)
             }
         }
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-        bottomNavigationView.setOnItemSelectedListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.nav_home -> {
-                    // Navegar o realizar acción para la sección "Inicio"
-                    showHomeScreen()
-                    true
-                }
-                R.id.nav_expenses -> {
-                    // Navegar o realizar acción para la sección "Egresos"
-                    showExpensesScreen()
-                    true
-                }
-                R.id.nav_profile -> {
-                    // Navegar o realizar acción para la sección "Perfil"
-                    showProfileScreen()
-                    true
-                }
-                else -> false
-            }
-        }
-    }
-    private fun showHomeScreen() {
-        val intent = Intent(this, Formulario1::class.java)
-        startActivity(intent)
+
     }
 
     private fun showExpensesScreen() {

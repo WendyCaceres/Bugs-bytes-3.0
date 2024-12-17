@@ -34,7 +34,7 @@ class Formulario3 : AppCompatActivity() {
         }
         val buttonAtras: Button = findViewById(R.id.botton_atras)
         buttonAtras.setOnClickListener {
-            val intent = Intent(this, Formulario1::class.java)
+            val intent = Intent(this, Formulario2::class.java)
             startActivity(intent)
         }
         val textInputEditText: TextInputEditText = findViewById(R.id.textInputEditText)
