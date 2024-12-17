@@ -78,7 +78,6 @@
             android:id="@+id/textInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Escribe aquí"
             android:textColor="@android:color/black" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -109,11 +108,9 @@
         android:id="@+id/boton_atras"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginStart="24dp"
         android:text="ATRAS"
-        android:textColor="@color/white"
-        android:backgroundTint="#723185"
-        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -121,11 +118,10 @@
         android:id="@+id/boton_finalizar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="24dp"
+
         android:text="TERMINAR"
-        android:textColor="@color/white"
-        android:backgroundTint="#723185"
-        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
