@@ -2,6 +2,16 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="red">#C97373</color>
+    <color name="purple">#A95BD7</color>
+    <color name="orange">#DF9B36</color>
+    <color name="nav_item_color_active">#FF6200EE</color> <!-- Color para ítem activo -->
+    <color name="nav_item_color_inactive">#FF757575</color> <!-- Color para ítem inactivo -->
+
+    <color name="red">#C97373</color>
+    <color name="purple">#A95BD7</color>
+    <color name="orange">#DF9B36</color>
+    <color name="pink">#CD6F8F</color>
     <color name="nav_item_color_active">#FF6200EE</color> <!-- Color para ítem activo -->
     <color name="nav_item_color_inactive">#FF757575</color> <!-- Color para ítem inactivo -->
 
