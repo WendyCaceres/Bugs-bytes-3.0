@@ -163,15 +163,35 @@
                 tools:listitem="@layout/item_historial" />
         </LinearLayout>
     </ScrollView>
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        app:menu="@menu/bottom_nav_menu"
-        app:labelVisibilityMode="labeled"
-        android:background="?android:attr/windowBackground"
-        app:itemIconTint="@menu/nav_item_color"
-        app:itemTextColor="@menu/nav_item_color" />
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="#9000FF">
+
+        <ImageButton
+            android:id="@+id/btnHome"
+            android:layout_width="140dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/home_24dp_e8eaed_fill0_wght400_grad0_opsz24"
+            android:contentDescription="Editar parqueo"
+            android:background="#9000FF"/>
+        <ImageButton
+            android:id="@+id/btnExpenses"
+            android:layout_width="140dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/analytics_24dp_e8eaed_fill0_wght400_grad0_opsz24"
+            android:contentDescription="Editar parqueo"
+            android:background="#9000FF"/>
+        <ImageButton
+            android:id="@+id/btnProfile"
+            android:layout_width="140dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/person_24dp_e8eaed_fill0_wght400_grad0_opsz24"
+            android:contentDescription="Editar parqueo"
+            android:background="#9000FF"/>
+    </LinearLayout>
+
 </LinearLayout>
 
