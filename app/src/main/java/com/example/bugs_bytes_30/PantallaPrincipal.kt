@@ -1,12 +1,14 @@
 package com.example.bugs_bytes_30
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import java.util.*
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class PantallaPrincipal : AppCompatActivity() {
     private lateinit var tvUserName: TextView
@@ -85,8 +87,42 @@ class PantallaPrincipal : AppCompatActivity() {
                 filterHistoryByDate(searchDate)
             }
         }
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        bottomNavigationView.setOnItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.nav_home -> {
+                    // Navegar o realizar acción para la sección "Inicio"
+                    showHomeScreen()
+                    true
+                }
+                R.id.nav_expenses -> {
+                    // Navegar o realizar acción para la sección "Egresos"
+                    showExpensesScreen()
+                    true
+                }
+                R.id.nav_profile -> {
+                    // Navegar o realizar acción para la sección "Perfil"
+                    showProfileScreen()
+                    true
+                }
+                else -> false
+            }
+        }
+    }
+    private fun showHomeScreen() {
+        val intent = Intent(this, Formulario1::class.java)
+        startActivity(intent)
     }
 
+    private fun showExpensesScreen() {
+        val intent = Intent(this, Formulario2::class.java)
+        startActivity(intent)
+    }
+
+    private fun showProfileScreen() {
+        val intent = Intent(this, Formulario3::class.java)
+        startActivity(intent)
+    }
     private fun updateStatistics() {
         tvExpenses.text = "Bs. ${totalExpenses}"
         tvSavings.text = "Bs. ${totalSavings}"

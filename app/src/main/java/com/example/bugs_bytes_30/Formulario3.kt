@@ -32,7 +32,7 @@ class Formulario3 : AppCompatActivity() {
             val intent = Intent(this, PantallaPrincipal::class.java)
             startActivity(intent)
         }
-        val buttonAtras: Button = findViewById(R.id.button_atras)
+        val buttonAtras: Button = findViewById(R.id.botton_atras)
         buttonAtras.setOnClickListener {
             val intent = Intent(this, Formulario1::class.java)
             startActivity(intent)

@@ -2,4 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="nav_item_color_active">#FF6200EE</color> <!-- Color para ítem activo -->
+    <color name="nav_item_color_inactive">#FF757575</color> <!-- Color para ítem inactivo -->
+
 </resources>
