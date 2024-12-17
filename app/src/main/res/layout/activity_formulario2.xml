@@ -49,7 +49,6 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed-medium"
             android:text="Agrega tu ingreso inicial, la meta, y la fecha objetivo."
             android:textColor="@android:color/black"
             android:textSize="18sp"/>
@@ -146,7 +145,6 @@
             android:clickable="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="DD/MM/YYYY"
             android:textColor="@android:color/black"/>
     </com.google.android.material.textfield.TextInputLayout>
     <Button
