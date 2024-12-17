@@ -1,20 +1,111 @@
 package com.example.bugs_bytes_30
 
-import android.os.Bundle
+import android.content.Intent
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.View
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageButton
+import android.widget.LinearLayout
+import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.marginEnd
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 
 class Formulario3 : AppCompatActivity() {
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_formulario3)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { view, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            view.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val textInputEditText: TextInputEditText = findViewById(R.id.textInputEditText)
+        val addCategoryButton: Button = findViewById(R.id.addCategoryButton)
+        val categoryList: LinearLayout = findViewById(R.id.categoryList)
+
+        addCategoryButton.setOnClickListener {
+            val categoryName = textInputEditText.text.toString().trim()
+
+            if (categoryName.isNotEmpty()) {
+                // Agregar una nueva categoría
+                addCategory(categoryList, categoryName)
+                textInputEditText.text = null
+            } else {
+                textInputEditText.error = "Por favor, ingrese un nombre válido"
+            }
+        }
+    }
+
+    private fun addCategory(parent: LinearLayout, categoryName: String) {
+        val categoryContainer = LinearLayout(this).apply {
+            layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            )
+            orientation = LinearLayout.HORIZONTAL
+            setPadding(16, 16, 16, 16)
+        }
+
+        val categoryTextView = TextView(this).apply {
+            text = categoryName
+            textSize = 18f
+            setTextColor(resources.getColor(android.R.color.black))
+            layoutParams = LinearLayout.LayoutParams(
+                0,
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                1f
+            )
+        }
+
+        // Crear botón para editar
+        val editButton = ImageButton(this).apply {
+            setImageResource(android.R.drawable.ic_menu_edit)
+            setBackgroundColor(resources.getColor(android.R.color.transparent))
+            setOnClickListener { editCategory(categoryTextView) }
+        }
+
+        // Crear botón para eliminar
+        val deleteButton = ImageButton(this).apply {
+            setImageResource(android.R.drawable.ic_menu_delete)
+            setBackgroundColor(resources.getColor(android.R.color.transparent))
+            setOnClickListener { parent.removeView(categoryContainer) }
+        }
+
+        categoryContainer.addView(categoryTextView)
+        categoryContainer.addView(editButton)
+        categoryContainer.addView(deleteButton)
+
+        parent.addView(categoryContainer)
+    }
+
+    private fun editCategory(categoryTextView: TextView) {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Editar Categoría")
+
+        val input = EditText(this).apply {
+            setText(categoryTextView.text)
+        }
+        builder.setView(input)
+
+        builder.setPositiveButton("Guardar") { _, _ ->
+            categoryTextView.text = input.text.toString().trim()
+        }
+
+        builder.setNegativeButton("Cancelar", null)
+
+        builder.show()
     }
 }
