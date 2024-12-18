@@ -69,7 +69,11 @@ class MainActivity : AppCompatActivity() {
                     "Telefono" to textInputEditText3.text.toString(),
                     "Fecha_nacimiento" to textInputEditTextDate.text.toString())
             )
-            val intent = Intent(this, Formulario2::class.java)
+            val intent = Intent(this, Formulario2::class.java).apply {
+                putExtra("email",email)
+                putExtra("provider", provider)
+                putExtra("Nombre_usuario", textInputEditText.text)
+            }
             startActivity(intent)
         }
     }

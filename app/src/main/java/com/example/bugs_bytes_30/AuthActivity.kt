@@ -75,11 +75,13 @@ class AuthActivity : AppCompatActivity() {
         val dialog: AlertDialog = builder.create()
         dialog.show()
     }
-    private fun showHome(email: String, provider: ProviderType){
-        val homeIntent=Intent(this, MainActivity::class.java).apply{
-            putExtra("email",email)
+
+    private fun showHome(email: String, provider: ProviderType) {
+        val mainIntent = Intent(this, MainActivity::class.java).apply {
+            putExtra("email", email)
             putExtra("provider", provider.name)
         }
-        startActivity(homeIntent)
+        startActivity(mainIntent)
+        finish() // Finaliza la actividad actual para evitar volver con el botón atrás
     }
 }

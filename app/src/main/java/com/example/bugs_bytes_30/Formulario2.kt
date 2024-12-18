@@ -9,25 +9,31 @@ import androidx.core.view.WindowInsetsCompat
 import android.app.DatePickerDialog
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
+import com.google.firebase.firestore.FirebaseFirestore
 import java.util.Calendar
 
 class Formulario2 : AppCompatActivity() {
+
+    private val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_formulario2)
 
-        val buttonSiguiente=findViewById<Button>(R.id.button_siguiente)
+        val buttonSiguiente = findViewById<Button>(R.id.button_siguiente)
         buttonSiguiente.setOnClickListener {
             val intent = Intent(this, Formulario3::class.java)
             startActivity(intent)
         }
+
         val buttonAtras: Button = findViewById(R.id.button_atras)
         buttonAtras.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { view, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             view.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -37,6 +43,13 @@ class Formulario2 : AppCompatActivity() {
         val dateEditText: EditText = findViewById(R.id.textInputEditTextDate)
         setupDatePicker(dateEditText)
 
+        // Obtén los datos de email y provider del intent
+        val bundle = intent.extras
+        val email = bundle?.getString("email")
+        val provider = bundle?.getString("provider")
+        if (email != null && provider != null) {
+            setup(email)
+        }
     }
 
     private fun setupDatePicker(editText: EditText) {
@@ -54,4 +67,53 @@ class Formulario2 : AppCompatActivity() {
             datePickerDialog.show()
         }
     }
+
+    private fun setup(email: String) {
+        title = "Ingresos/Egresos"
+
+        val textInputEditTextType: EditText = findViewById(R.id.textInputEditText)
+        val textInputEditTextAmount: EditText = findViewById(R.id.textInputEditText2)
+        val textInputEditTextDate: EditText = findViewById(R.id.textInputEditTextDate)
+
+        val buttonGuardarIngreso = findViewById<Button>(R.id.button_siguiente)
+
+        buttonGuardarIngreso.setOnClickListener {
+            if (textInputEditTextType.text.isNullOrBlank() ||
+                textInputEditTextAmount.text.isNullOrBlank() ||
+                textInputEditTextDate.text.isNullOrBlank()) {
+                Toast.makeText(this, "Por favor, completa todos los campos.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            val monto = textInputEditTextAmount.text.toString().toDoubleOrNull()
+            if (monto == null) {
+                Toast.makeText(this, "El monto debe ser un número válido.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            val ingreso = hashMapOf(
+                "Tipo" to textInputEditTextType.text.toString(),
+                "Monto" to monto,
+                "Fecha" to textInputEditTextDate.text.toString()
+            )
+
+            db.collection("users")
+                .document(email)
+                .collection("ingresos")
+                .add(ingreso)
+                .addOnSuccessListener {
+                    Toast.makeText(this, "Ingreso guardado correctamente.", Toast.LENGTH_SHORT).show()
+                    textInputEditTextType.text.clear()
+                    textInputEditTextAmount.text.clear()
+                    textInputEditTextDate.text.clear()
+
+                }
+                .addOnFailureListener { e ->
+                    Toast.makeText(this, "Error al guardar el ingreso: ${e.message}", Toast.LENGTH_LONG).show()
+                    e.printStackTrace()
+                }
+        }
+    }
+
 }
+
