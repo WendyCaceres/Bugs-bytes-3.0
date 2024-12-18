@@ -37,8 +37,7 @@ class AuthActivity : AppCompatActivity() {
                     .createUserWithEmailAndPassword(username, password)
                     .addOnCompleteListener {
                         if (it.isSuccessful) {
-                            val intent = Intent(this, PantallaPrincipal::class.java)
-                            startActivity(intent)
+                            showHome(it.result?.user?.email ?:"", ProviderType.BASIC)
                         } else {
                             showAlert()
                         }
@@ -53,8 +52,7 @@ class AuthActivity : AppCompatActivity() {
                     .signInWithEmailAndPassword(username, password)
                     .addOnCompleteListener {
                         if (it.isSuccessful) {
-                            val intent = Intent(this, MainActivity::class.java)
-                            startActivity(intent)
+                            showHome(it.result?.user?.email ?:"", ProviderType.BASIC)
                         } else {
                             showAlert()
                         }
@@ -69,5 +67,12 @@ class AuthActivity : AppCompatActivity() {
         builder.setPositiveButton("Aceptar", null)
         val dialog: AlertDialog = builder.create()
         dialog.show()
+    }
+    private fun showHome(email: String, provider: ProviderType){
+        val homeIntent=Intent(this, MainActivity::class.java).apply{
+            putExtra("email",email)
+            putExtra("provider", provider.name)
+        }
+        startActivity(homeIntent)
     }
 }

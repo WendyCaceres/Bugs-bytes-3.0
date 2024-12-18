@@ -10,9 +10,16 @@ import android.content.Intent
 import android.widget.Button
 import android.widget.EditText
 import java.util.Calendar
+import com.google.firebase.firestore.FirebaseFirestore
 
+enum class ProviderType{
+    BASIC
+}
 
 class MainActivity : AppCompatActivity() {
+
+    private val db=FirebaseFirestore.getInstance()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -24,6 +31,10 @@ class MainActivity : AppCompatActivity() {
         }
         val dateEditText: EditText = findViewById(R.id.textInputEditTextDate)
         setupDatePicker(dateEditText)
+        val bundle =intent.extras
+        val email = bundle?.getString("email")
+        val provider = bundle?.getString("provider")
+        setup(email ?:"", provider ?: "")
     }
     private fun setupDatePicker(editText: EditText) {
         editText.setOnClickListener {
@@ -41,6 +52,23 @@ class MainActivity : AppCompatActivity() {
         }
         val botonSiguiente = findViewById<Button>(R.id.button_siguiente)
         botonSiguiente.setOnClickListener {
+            val intent = Intent(this, Formulario2::class.java)
+            startActivity(intent)
+        }
+    }
+    private fun setup(email:String, provider: String) {
+        title ="Inicio"
+        val button_siguiente: Button = findViewById(R.id.button_siguiente)
+        val textInputEditText: EditText = findViewById(R.id.textInputEditText)
+        val textInputEditText3: EditText = findViewById(R.id.textInputEditText3)
+        val textInputEditTextDate: EditText = findViewById(R.id.textInputEditTextDate)
+        button_siguiente.setOnClickListener {
+            db.collection("users").document(email).set(
+                hashMapOf("provider" to provider,
+                    "Nombre_usuario" to textInputEditText.text.toString(),
+                    "Telefono" to textInputEditText3.text.toString(),
+                    "Fecha_nacimiento" to textInputEditTextDate.text.toString())
+            )
             val intent = Intent(this, Formulario2::class.java)
             startActivity(intent)
         }
