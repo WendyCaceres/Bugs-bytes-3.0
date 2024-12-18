@@ -1,29 +1,19 @@
 package com.example.bugs_bytes_30
 
-import android.app.DatePickerDialog
+import com.google.android.material.datepicker.MaterialDatePicker
+import java.text.SimpleDateFormat
 import android.content.Intent
 import android.os.Bundle
-import android.widget.*
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.bugs_bytes_30.databinding.ActivityPantallaPrincipalBinding
 import java.util.*
 
 class PantallaPrincipal : AppCompatActivity() {
-    private lateinit var tvUserName: TextView
-    private lateinit var tvTotalAmount: TextView
-    private lateinit var tvExpenses: TextView
-    private lateinit var tvSavings: TextView
-    private lateinit var progressBar: ProgressBar
-    private lateinit var btnAddIncome: Button
-    private lateinit var btnAddExpense: Button
-    private lateinit var rvHistory: RecyclerView
-    private lateinit var etSearchDate: EditText
-    private lateinit var btnSearch: ImageButton
-    private lateinit var btnHome: ImageButton
-    private lateinit var btnExpensesNav: ImageButton
-    private lateinit var btnProfile: ImageButton
 
+    private lateinit var binding: ActivityPantallaPrincipalBinding
     private var totalSavings = 1500.0
     private var totalExpenses = 500.0
     private val historyList = mutableListOf(
@@ -38,101 +28,81 @@ class PantallaPrincipal : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_pantalla_principal)
+        binding = ActivityPantallaPrincipalBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        tvUserName = findViewById(R.id.tvUserName)
-        tvTotalAmount = findViewById(R.id.tvTotalAmount)
-        tvExpenses = findViewById(R.id.tvExpenses)
-        tvSavings = findViewById(R.id.tvSavings)
-        progressBar = findViewById(R.id.progressBar)
-        btnAddIncome = findViewById(R.id.btnAddIncome)
-        btnAddExpense = findViewById(R.id.btnAddExpense)
-        rvHistory = findViewById(R.id.rvHistory)
-        etSearchDate = findViewById(R.id.etSearchDate)
-        btnSearch = findViewById(R.id.btnSearch)
-        btnHome = findViewById(R.id.btnHome)
-        btnExpensesNav = findViewById(R.id.btnExpenses)
-        btnProfile = findViewById(R.id.btnProfile)
+        binding.textInputEditTextDate.setOnClickListener {
+            val datePicker = MaterialDatePicker.Builder.datePicker()
+                .setTitleText("Selecciona una fecha")
+                .build()
 
-        rvHistory.layoutManager = LinearLayoutManager(this)
-        rvHistory.adapter = HistoryAdapter(filteredHistoryList)
-        updateStatistics()
+            datePicker.show(supportFragmentManager, "DATE_PICKER")
 
-        btnAddIncome.setOnClickListener {
-            totalSavings += 100
-            historyList.add("Nuevo ingreso - TOTAL: 100Bs")
-            updateStatistics()
-            rvHistory.adapter?.notifyDataSetChanged()
-        }
-
-        btnAddExpense.setOnClickListener {
-            totalExpenses += 50
-            historyList.add("Nuevo egreso - TOTAL: 50Bs")
-            updateStatistics()
-            rvHistory.adapter?.notifyDataSetChanged()
-        }
-
-        btnSearch.setOnClickListener {
-            val searchDate = etSearchDate.text.toString().trim()
-            if (searchDate.isEmpty()) {
-                val calendar = Calendar.getInstance()
-                val datePicker = DatePickerDialog(
-                    this,
-                    { _, year, month, dayOfMonth ->
-                        val selectedDate = "$dayOfMonth/${month + 1}/$year"
-                        etSearchDate.setText(selectedDate)
-                        filterHistoryByDate(selectedDate)
-                    },
-                    calendar.get(Calendar.YEAR),
-                    calendar.get(Calendar.MONTH),
-                    calendar.get(Calendar.DAY_OF_MONTH)
-                )
-                datePicker.show()
-            } else {
-                filterHistoryByDate(searchDate)
+            datePicker.addOnPositiveButtonClickListener { selection ->
+                val selectedDate = formatDate(selection)
+                binding.textInputEditTextDate.setText(selectedDate)
+                filterHistoryByDate(selectedDate)
             }
         }
 
-        btnHome.setOnClickListener {
-            val intent = Intent(this, PantallaPrincipal::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
-            startActivity(intent)
+        binding.recyclerViewHistory.layoutManager = LinearLayoutManager(this)
+        binding.recyclerViewHistory.adapter = HistoryAdapter(filteredHistoryList)
+
+        binding.botoningresos.setOnClickListener {
+            totalSavings += 100
+            historyList.add("${getCurrentDate()} - TOTAL: 100Bs")
+            updateStatistics()
+            binding.recyclerViewHistory.adapter?.notifyDataSetChanged()
         }
 
-        btnExpensesNav.setOnClickListener {
-            val intent = Intent(this, Formulario2::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
-            startActivity(intent)
+        binding.botonegresos.setOnClickListener {
+            totalExpenses += 50
+            historyList.add("${getCurrentDate()} - TOTAL: 50Bs")
+            updateStatistics()
+            binding.recyclerViewHistory.adapter?.notifyDataSetChanged()
         }
 
-        btnProfile.setOnClickListener {
+        binding.botonperfil.setOnClickListener {
             val intent = Intent(this, PantallaUsuarioActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+            startActivity(intent)
+        }
+
+        binding.botonestadistica.setOnClickListener {
+            val intent = Intent(this, Formulario2::class.java)
             startActivity(intent)
         }
     }
 
-    private fun updateStatistics() {
-        tvExpenses.text = "Bs. ${totalExpenses}"
-        tvSavings.text = "Bs. ${totalSavings}"
-        val total = totalSavings - totalExpenses
-        tvTotalAmount.text = "Total\n${"%.2f".format(total)} Bs"
-        val maxAmount = 1000.0
-        val progress = if (totalExpenses > maxAmount) 100 else (totalExpenses / maxAmount * 100).toInt()
-        progressBar.progress = progress
+    private fun formatDate(selection: Long?): String {
+        return if (selection != null) {
+            val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+            formatter.format(Date(selection))
+        } else ""
+    }
+
+    private fun getCurrentDate(): String {
+        val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        return formatter.format(Date())
     }
 
     private fun filterHistoryByDate(date: String) {
-        val formattedDate = date.trim()
         filteredHistoryList = historyList.filter {
-            val historyDate = it.substring(0, 10)
-            historyDate == formattedDate
+            it.startsWith(date)
         }.toMutableList()
-        rvHistory.adapter?.notifyDataSetChanged()
+        binding.recyclerViewHistory.adapter = HistoryAdapter(filteredHistoryList)
     }
+
+    private fun updateStatistics() {
+        binding.textoegresos.text = "Bs. $totalExpenses"
+        binding.total.text = "Bs. $totalSavings"
+        val total = totalSavings - totalExpenses
+        binding.montototal.text = "Total\n${"%.2f".format(total)} Bs"
+    }
+
 
     inner class HistoryAdapter(private val history: List<String>) :
         RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
+
         inner class HistoryViewHolder(itemView: TextView) : RecyclerView.ViewHolder(itemView) {
             val tvItem: TextView = itemView
         }
@@ -150,5 +120,7 @@ class PantallaPrincipal : AppCompatActivity() {
         }
 
         override fun getItemCount(): Int = history.size
+
+
     }
 }

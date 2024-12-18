@@ -7,10 +7,12 @@ plugins {
 android {
     namespace = "com.example.bugs_bytes_30"
     compileSdk = 35
+
     buildFeatures {
         //noinspection DataBindingWithoutKapt
         viewBinding = true
         dataBinding = true
+        viewBinding = true
     }
 
     defaultConfig {
@@ -52,6 +54,7 @@ dependencies {
     implementation(libs.firebase.analytics)
     implementation(platform(libs.firebase.bom.v3280))
     implementation(libs.firebase.auth)
+    implementation(libs.firebase.auth.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
