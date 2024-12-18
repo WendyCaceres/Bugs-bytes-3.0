@@ -9,6 +9,7 @@ android {
     compileSdk = 35
     buildFeatures {
         //noinspection DataBindingWithoutKapt
+        viewBinding = true
         dataBinding = true
     }
 
@@ -49,6 +50,8 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)
+    implementation(platform(libs.firebase.bom.v3280))
+    implementation(libs.firebase.auth)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

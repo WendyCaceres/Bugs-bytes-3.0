@@ -25,10 +25,10 @@
             android:name=".PantallaUsuarioActivity"
             android:exported="true" />
         <activity
-            android:name=".PantallaLoginActivity"
+            android:name=".MainActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".AuthActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
