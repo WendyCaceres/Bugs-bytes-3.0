@@ -26,46 +26,53 @@ class AuthActivity : AppCompatActivity() {
         }
         setup()
     }
+
     private fun setup() {
         title = "Autenticación"
         binding.botonLogin.setOnClickListener {
-            val username = binding.textusername.text.toString()
+            val email = binding.textemail.text.toString()
             val password = binding.textpassword.text.toString()
 
-            if (username.isNotEmpty() && password.isNotEmpty()) {
+            if (email.isNotEmpty() && password.isNotEmpty()) {
                 FirebaseAuth.getInstance()
-                    .createUserWithEmailAndPassword(username, password)
+                    .signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener {
                         if (it.isSuccessful) {
                             val intent = Intent(this, PantallaPrincipal::class.java)
                             startActivity(intent)
                         } else {
-                            showAlert()
+                            showAlert("Error al iniciar sesión")
                         }
                     }
+            } else {
+                showAlert("Por favor, completa todos los campos")
             }
         }
         binding.crearUsuario.setOnClickListener {
-            val username = binding.textusername.text.toString()
+            val email = binding.textemail.text.toString()
             val password = binding.textpassword.text.toString()
-            if (username.isNotEmpty() && password.isNotEmpty()) {
+
+            if (email.isNotEmpty() && password.isNotEmpty()) {
                 FirebaseAuth.getInstance()
-                    .signInWithEmailAndPassword(username, password)
+                    .createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener {
                         if (it.isSuccessful) {
                             val intent = Intent(this, MainActivity::class.java)
                             startActivity(intent)
                         } else {
-                            showAlert()
+                            showAlert("Error al registrarse")
                         }
                     }
+            } else {
+                showAlert("Por favor, completa todos los campos")
             }
         }
     }
-    private fun showAlert() {
+
+    private fun showAlert(message: String) {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Error")
-        builder.setMessage("Se ha producido un error autenticando al usuario")
+        builder.setMessage(message)
         builder.setPositiveButton("Aceptar", null)
         val dialog: AlertDialog = builder.create()
         dialog.show()
