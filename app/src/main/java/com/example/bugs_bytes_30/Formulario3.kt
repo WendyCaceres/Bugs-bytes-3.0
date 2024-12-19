@@ -12,9 +12,11 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.bugs_bytes_30.databinding.ActivityFormulario3Binding
 import com.google.android.material.textfield.TextInputEditText
 
 class Formulario3 : AppCompatActivity() {
+    private lateinit var binding: ActivityFormulario3Binding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +29,8 @@ class Formulario3 : AppCompatActivity() {
             view.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+
         val buttonSiguiente=findViewById<Button>(R.id.botton_terminar)
         buttonSiguiente.setOnClickListener {
             val intent = Intent(this, PantallaPrincipal::class.java)

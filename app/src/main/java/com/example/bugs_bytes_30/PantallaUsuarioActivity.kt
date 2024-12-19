@@ -9,6 +9,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class PantallaUsuarioActivity : AppCompatActivity() {
+
+
     private lateinit var botoninicio: ImageButton
     private lateinit var botonestadistica: ImageButton
 
@@ -22,6 +24,10 @@ class PantallaUsuarioActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+
+
+
         botoninicio = findViewById(R.id.botoninicio)
         botonestadistica = findViewById(R.id.botonestadistica)
         botoninicio.setOnClickListener {

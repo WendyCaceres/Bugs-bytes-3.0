@@ -163,18 +163,21 @@
             android:layout_width="140dp"
             android:layout_height="match_parent"
             android:src="@drawable/home_24dp_e8eaed_fill0_wght400_grad0_opsz24"
-            android:background="#9000FF"/>
+            android:background="#9000FF"
+            android:contentDescription="Inicio "/>
         <ImageButton
             android:id="@+id/botonestadistica"
             android:layout_width="140dp"
             android:layout_height="match_parent"
             android:src="@drawable/analytics_24dp_e8eaed_fill0_wght400_grad0_opsz24"
-            android:background="#9000FF"/>
+            android:background="#9000FF"
+            android:contentDescription="estadisticas"/>
         <ImageButton
             android:id="@+id/botonperfil"
             android:layout_width="140dp"
             android:layout_height="match_parent"
             android:src="@drawable/person_24dp_e8eaed_fill0_wght400_grad0_opsz24"
-            android:background="#9000FF"/>
+            android:background="#9000FF"
+            android:contentDescription="perfil"/>
     </LinearLayout>
 </LinearLayout>
