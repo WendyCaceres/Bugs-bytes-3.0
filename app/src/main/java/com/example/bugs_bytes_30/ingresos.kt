@@ -1,11 +1,14 @@
 package com.example.bugs_bytes_30
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bugs_bytes_30.databinding.ActivityIngresosBinding
 
-class ingresos : AppCompatActivity() {
+
+class Ingresos : AppCompatActivity() {
 
 
     private lateinit var binding: ActivityIngresosBinding
@@ -17,7 +20,7 @@ class ingresos : AppCompatActivity() {
         binding = ActivityIngresosBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        binding.botonListo.setOnClickListener {
+        binding.botonListoIngresos.setOnClickListener {
             val nombreIngreso = binding.textInputEditText.text.toString()
             val tipoIngreso = binding.textInputEditText2.text.toString()
             val montoIngreso = binding.textInputEditText3.text.toString()
@@ -25,6 +28,10 @@ class ingresos : AppCompatActivity() {
             recyclerIngresosAdapter.addDataToList(listOf(ingreso))
             recyclerIngresosAdapter.notifyDataSetChanged()
         }
+
+
+
+
 
         setUpRecyclerView()
     }

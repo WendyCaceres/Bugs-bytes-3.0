@@ -1,10 +1,11 @@
 package com.example.bugs_bytes_30
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.widget.Button
+
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bugs_bytes_30.databinding.ActivityEgresosBinding
 
@@ -19,7 +20,7 @@ class Egresos : AppCompatActivity() {
         binding = ActivityEgresosBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        binding.botonListo.setOnClickListener {
+        binding.botonListoEgresos.setOnClickListener {
             val nombreEgreso = binding.textInputEditText.text.toString()
             val tipoEgreso = binding.textInputEditText2.text.toString()
             val montoEgreso = binding.textInputEditText3.text.toString()
@@ -27,6 +28,7 @@ class Egresos : AppCompatActivity() {
             recyclerEgresosAdapter.addDataToList(listOf(egreso))
             recyclerEgresosAdapter.notifyDataSetChanged()
         }
+
 
 
 

@@ -133,7 +133,7 @@
 
 
         <Button
-            android:id="@+id/boton_listo"
+            android:id="@+id/boton_listoEgresos"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="290dp"

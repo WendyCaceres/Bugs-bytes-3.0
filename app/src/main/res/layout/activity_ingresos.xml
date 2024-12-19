@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#B3D4D8"
-    tools:context=".ingresos">
+    tools:context=".Ingresos">
 
     <LinearLayout
     android:id="@+id/fondo_agregarOEditar"
@@ -131,7 +131,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/boton_listo"
+            android:id="@+id/boton_listoIngresos"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="290dp"
