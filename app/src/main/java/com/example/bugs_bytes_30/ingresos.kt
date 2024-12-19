@@ -2,7 +2,6 @@ package com.example.bugs_bytes_30
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bugs_bytes_30.databinding.ActivityIngresosBinding
@@ -29,9 +28,14 @@ class Ingresos : AppCompatActivity() {
             recyclerIngresosAdapter.notifyDataSetChanged()
         }
 
-
-
-
+        binding.botonAtras.setOnClickListener {
+            val intent = Intent(this, PantallaPrincipal::class.java)
+            startActivity(intent)
+        }
+        binding.botonHecho.setOnClickListener {
+            val intent = Intent(this, Egresos::class.java)
+            startActivity(intent)
+        }
 
         setUpRecyclerView()
     }

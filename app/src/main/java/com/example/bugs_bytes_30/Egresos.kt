@@ -29,6 +29,15 @@ class Egresos : AppCompatActivity() {
             recyclerEgresosAdapter.notifyDataSetChanged()
         }
 
+        binding.botonAtras.setOnClickListener {
+            val intent = Intent(this, Ingresos::class.java)
+            startActivity(intent)
+        }
+        binding.botonHecho.setOnClickListener {
+            val intent = Intent(this, PantallaPrincipal::class.java)
+            startActivity(intent)
+        }
+
 
 
 
