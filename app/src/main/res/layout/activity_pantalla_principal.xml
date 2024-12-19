@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".PantallaPrincipal">
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -117,7 +116,7 @@
                     android:indeterminate="false"
                     android:max="100"
                     android:progress="50"
-                    android:progressDrawable="@drawable/circular_progress" />
+                    android:progressDrawable="@drawable/circular_progress" /> />
             </LinearLayout>
 
             <TextView
@@ -150,7 +149,6 @@
                 android:layout_marginTop="16dp" />
         </LinearLayout>
     </ScrollView>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -163,18 +161,23 @@
             android:layout_width="140dp"
             android:layout_height="match_parent"
             android:src="@drawable/home_24dp_e8eaed_fill0_wght400_grad0_opsz24"
+            android:contentDescription="Editar parqueo"
             android:background="#9000FF"/>
         <ImageButton
             android:id="@+id/botonestadistica"
             android:layout_width="140dp"
             android:layout_height="match_parent"
             android:src="@drawable/analytics_24dp_e8eaed_fill0_wght400_grad0_opsz24"
+            android:contentDescription="Editar parqueo"
             android:background="#9000FF"/>
         <ImageButton
             android:id="@+id/botonperfil"
             android:layout_width="140dp"
             android:layout_height="match_parent"
             android:src="@drawable/person_24dp_e8eaed_fill0_wght400_grad0_opsz24"
+            android:contentDescription="Editar parqueo"
             android:background="#9000FF"/>
     </LinearLayout>
+
 </LinearLayout>
+
