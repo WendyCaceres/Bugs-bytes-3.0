@@ -28,7 +28,7 @@ class AuthActivity : AppCompatActivity() {
     }
 
     private fun setup() {
-        title = "Autenticación"
+        title = "Authentication"
         binding.botonLogin.setOnClickListener {
             val email = binding.textemail.text.toString()
             val password = binding.textpassword.text.toString()
@@ -82,6 +82,5 @@ class AuthActivity : AppCompatActivity() {
             putExtra("provider", provider.name)
         }
         startActivity(mainIntent)
-        finish() // Finaliza la actividad actual para evitar volver con el botón atrás
     }
 }

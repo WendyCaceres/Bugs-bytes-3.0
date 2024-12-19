@@ -44,6 +44,7 @@
         android:layout_marginTop="160dp" />
 
     <TextView
+        android:id="@+id/texto_nombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -59,17 +60,17 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="8dp"
         android:text="Tu nombre aquí"
         android:textSize="16sp"
-        android:textColor="@android:color/black"
-        app:layout_constraintTop_toBottomOf="@+id/imagen_de_fondo" />
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@+id/texto_nombre" />
 
     <TextView
-        android:id="@+id/correo_text"
+        android:id="@+id/texto_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginStart="20dp"
         android:text="Correo Electronico"
         android:textSize="18sp"
@@ -77,25 +78,27 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/email"
+        android:id="@+id/email_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="8dp"
         android:text="correo@ejemplo.com"
         android:textSize="16sp"
-        android:textColor="@android:color/black"
-        app:layout_constraintTop_toBottomOf="@+id/nombre_completo" />
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@+id/texto_email" />
 
     <TextView
+        android:id="@+id/texto_num"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:layout_marginStart="20dp"
         android:text="Numero de Telefono"
         android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@+id/email"
+
+        app:layout_constraintTop_toBottomOf="@+id/email_text"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -104,13 +107,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="8dp"
         android:text="+1234567890"
         android:textSize="16sp"
-        android:textColor="@android:color/black"
-        app:layout_constraintTop_toBottomOf="@+id/email" />
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@+id/texto_num" />
 
     <TextView
+        android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -126,11 +130,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="8dp"
         android:text="01/01/2000"
         android:textSize="16sp"
-        android:textColor="@android:color/black"
-        app:layout_constraintTop_toBottomOf="@+id/numero_de_telefono" />
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@+id/email" />
 
     <LinearLayout
         android:layout_width="match_parent"
