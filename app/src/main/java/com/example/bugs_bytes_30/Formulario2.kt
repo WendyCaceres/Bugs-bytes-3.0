@@ -43,12 +43,11 @@ class Formulario2 : AppCompatActivity() {
         val dateEditText: EditText = findViewById(R.id.textInputEditTextDate)
         setupDatePicker(dateEditText)
 
-        // Obtén los datos de email y provider del intent
         val bundle = intent.extras
         val email = bundle?.getString("email")
         val provider = bundle?.getString("provider")
         if (email != null && provider != null) {
-            setup(email)
+            setup(email,provider)
         }
     }
 
@@ -68,7 +67,7 @@ class Formulario2 : AppCompatActivity() {
         }
     }
 
-    private fun setup(email: String) {
+    private fun setup(email: String,provider: String) {
         title = "Ingresos/Egresos"
 
         val textInputEditTextType: EditText = findViewById(R.id.textInputEditText)

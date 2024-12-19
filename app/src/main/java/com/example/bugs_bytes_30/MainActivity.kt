@@ -11,11 +11,9 @@ import android.widget.Button
 import android.widget.EditText
 import java.util.Calendar
 import com.google.firebase.firestore.FirebaseFirestore
-
 enum class ProviderType{
     BASIC
 }
-
 class MainActivity : AppCompatActivity() {
 
     private val db=FirebaseFirestore.getInstance()
@@ -52,7 +50,7 @@ class MainActivity : AppCompatActivity() {
         }
         val botonSiguiente = findViewById<Button>(R.id.button_siguiente)
         botonSiguiente.setOnClickListener {
-            val intent = Intent(this, Formulario2::class.java)
+            val intent = Intent(this, PantallaUsuarioActivity::class.java)
             startActivity(intent)
         }
     }
@@ -70,8 +68,9 @@ class MainActivity : AppCompatActivity() {
                     "Fecha_nacimiento" to textInputEditTextDate.text.toString())
             )
             val intent = Intent(this, Formulario2::class.java).apply {
+                putExtra("telefono", textInputEditText3.text)
+                putExtra("telefono", textInputEditTextDate.text)
                 putExtra("email",email)
-                putExtra("provider", provider)
                 putExtra("Nombre_usuario", textInputEditText.text)
             }
             startActivity(intent)
