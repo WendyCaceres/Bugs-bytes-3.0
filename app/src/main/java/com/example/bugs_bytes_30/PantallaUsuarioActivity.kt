@@ -52,7 +52,7 @@ class PantallaUsuarioActivity : AppCompatActivity() {
     }
 
     private fun setup(email: String, fechaNacimiento: String, nombreUsuario: String, telefono: String) {
-        val emailTextView: TextView = findViewById(R.id.email_text) // Asegúrate de que este ID exista en tu XML
+        val emailTextView: TextView = findViewById(R.id.email_text)
         val nombreCompleto: TextView = findViewById(R.id.nombre_completo)
         val numeroDeTelefono: TextView = findViewById(R.id.numero_de_telefono)
         val fechaDeNacimiento: TextView = findViewById(R.id.fecha_de_nacimiento)
