@@ -19,6 +19,12 @@
             android:name=".PantallaEstadistica"
             android:exported="true" />
         <activity
+            android:name=".Egresos"
+            android:exported="false" />
+        <activity
+            android:name=".ingresos"
+            android:exported="false" />
+        <activity
             android:name=".Formulario2"
             android:exported="true" />
         <activity
