@@ -38,7 +38,11 @@ class AuthActivity : AppCompatActivity() {
                     .signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener {
                         if (it.isSuccessful) {
-                            showHome(it.result?.user?.email ?:"", ProviderType.BASIC)
+                            val mainIntent = Intent(this, PantallaPrincipal::class.java).apply {
+                                putExtra("email", email)
+                                putExtra("provider", password)
+                            }
+                            startActivity(mainIntent)
                         } else {
                             showAlert("Error al iniciar sesión")
                         }
@@ -56,7 +60,11 @@ class AuthActivity : AppCompatActivity() {
                     .createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener {
                         if (it.isSuccessful) {
-                            showHome(it.result?.user?.email ?:"", ProviderType.BASIC)
+                            val mainIntent = Intent(this, MainActivity::class.java).apply {
+                                putExtra("email", email)
+                                putExtra("provider", password)
+                            }
+                            startActivity(mainIntent)
                         } else {
                             showAlert("Error al registrarse")
                         }
@@ -76,11 +84,5 @@ class AuthActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    private fun showHome(email: String, provider: ProviderType) {
-        val mainIntent = Intent(this, MainActivity::class.java).apply {
-            putExtra("email", email)
-            putExtra("provider", provider.name)
-        }
-        startActivity(mainIntent)
-    }
+
 }
