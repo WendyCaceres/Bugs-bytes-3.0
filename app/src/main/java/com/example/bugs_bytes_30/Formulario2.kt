@@ -2,15 +2,15 @@ package com.example.bugs_bytes_30
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import android.app.DatePickerDialog
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
 import com.google.firebase.firestore.FirebaseFirestore
+import android.app.DatePickerDialog
 import java.util.Calendar
 
 class Formulario2 : AppCompatActivity() {
@@ -23,16 +23,8 @@ class Formulario2 : AppCompatActivity() {
         setContentView(R.layout.activity_formulario2)
 
         val buttonSiguiente = findViewById<Button>(R.id.button_siguiente)
-        buttonSiguiente.setOnClickListener {
-            val intent = Intent(this, Formulario3::class.java)
-            startActivity(intent)
-        }
-
         val buttonAtras: Button = findViewById(R.id.button_atras)
-        buttonAtras.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
+        val dateEditText: EditText = findViewById(R.id.textInputEditTextDate)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { view, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -40,17 +32,24 @@ class Formulario2 : AppCompatActivity() {
             insets
         }
 
-        val dateEditText: EditText = findViewById(R.id.textInputEditTextDate)
+        buttonSiguiente.setOnClickListener {
+            val intent = Intent(this, Formulario3::class.java)
+            startActivity(intent)
+        }
+
+        buttonAtras.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
         setupDatePicker(dateEditText)
 
-        // Obtén los datos de email y provider del intent
-        val bundle = intent.extras
         val email = intent.getStringExtra("email") ?: "Sin correo"
-        val fechaNacimiento = bundle?.getString("Fecha_nacimiento") ?: "Sin fecha"
-        val nombreUsuario = bundle?.getString("Nombre_usuario") ?: "Sin nombre"
-        val telefono = bundle?.getString("Telefono") ?: "Sin teléfono"
+        val fechaNacimiento = intent.getStringExtra("Fecha_nacimiento") ?: "Sin fecha"
+        val nombreUsuario = intent.getStringExtra("Nombre_usuario") ?: "Sin nombre"
+        val telefono = intent.getStringExtra("Telefono") ?: "Sin teléfono"
 
-        setup(email,fechaNacimiento,nombreUsuario,telefono)
+        setup(email, fechaNacimiento, nombreUsuario, telefono)
     }
 
     private fun setupDatePicker(editText: EditText) {
@@ -75,20 +74,22 @@ class Formulario2 : AppCompatActivity() {
         val textInputEditTextType: EditText = findViewById(R.id.textInputEditText)
         val textInputEditTextAmount: EditText = findViewById(R.id.textInputEditText2)
         val textInputEditTextDate: EditText = findViewById(R.id.textInputEditTextDate)
-        val button_siguiente = findViewById<Button>(R.id.button_siguiente)
+        val buttonSiguiente = findViewById<Button>(R.id.button_siguiente)
 
-        button_siguiente.setOnClickListener {
+        buttonSiguiente.setOnClickListener {
             if (textInputEditTextType.text.isNullOrBlank() ||
                 textInputEditTextAmount.text.isNullOrBlank() ||
                 textInputEditTextDate.text.isNullOrBlank()) {
                 Toast.makeText(this, "Por favor, completa todos los campos.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+
             val ingreso = hashMapOf(
                 "Ingreso Inicial" to textInputEditTextType.text.toString(),
                 "Meta de ahorro" to textInputEditTextAmount.text.toString(),
                 "Fecha" to textInputEditTextDate.text.toString()
             )
+
             db.collection("users")
                 .document(email)
                 .collection("General")
@@ -102,7 +103,6 @@ class Formulario2 : AppCompatActivity() {
                         putExtra("Ingreso Inicial", textInputEditTextType.text.toString())
                         putExtra("Meta de ahorro", textInputEditTextAmount.text.toString())
                         putExtra("Fecha", textInputEditTextDate.text.toString())
-
                     }
                     Toast.makeText(this, "Ingreso guardado correctamente.", Toast.LENGTH_SHORT).show()
                     textInputEditTextType.text.clear()

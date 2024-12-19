@@ -82,16 +82,6 @@ class PantallaPrincipal : AppCompatActivity() {
             intent.putExtra("SELECTED_DATE", selectedDate)
             startActivity(intent)
         }
-        val bundle = intent.extras
-        val email = intent.getStringExtra("email") ?: "Sin correo"
-        val fechaNacimiento = bundle?.getString("Fecha_nacimiento") ?: "Sin fecha"
-        val nombreUsuario = bundle?.getString("Nombre_usuario") ?: "Sin nombre"
-        val telefono = bundle?.getString("telefono") ?: "Sin teléfono"
-        val I_inicial = bundle?.getString("Ingreso Inicial") ?: "Sin teléfono"
-        val M_ahorro = bundle?.getString("Meta de ahorro") ?: "Sin datos"
-        val fecha = bundle?.getString("Fecha") ?: "Sin datos"
-
-        setup(email,fechaNacimiento,nombreUsuario,telefono,I_inicial,M_ahorro,fecha)
     }
 
     private fun formatDate(selection: Long?): String {
@@ -154,21 +144,5 @@ class PantallaPrincipal : AppCompatActivity() {
         }
 
         override fun getItemCount(): Int = history.size
-    }
-    private fun setup(email: String, fechaNacimiento: String, nombreUsuario: String, telefono: String, I_inicial: String,
-                      M_ahorro: String, fecha:String){
-        val button_siguiente = findViewById<Button>(R.id.button_siguiente)
-        button_siguiente.setOnClickListener{
-            val intent = Intent(this, Formulario2::class.java).apply {
-                putExtra("email", email)
-                putExtra("Fecha_nacimiento", fechaNacimiento)
-                putExtra("Nombre_usuario",nombreUsuario )
-                putExtra("Telefono", telefono)
-                putExtra("I_inicial", I_inicial)
-                putExtra("M_ahorro", M_ahorro)
-                putExtra("fecha", fecha)
-            }
-            startActivity(intent)
-        }
     }
 }
