@@ -5,7 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bugs_bytes_30.databinding.ActivityIngresosBinding
 
-class ingresos : AppCompatActivity() {
+
+class Ingresos : AppCompatActivity() {
 
 
     private lateinit var binding: ActivityIngresosBinding
