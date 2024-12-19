@@ -40,14 +40,12 @@ class PantallaUsuarioActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // Recuperar datos enviados desde la actividad anterior
         val bundle = intent.extras
         val email = intent.getStringExtra("email") ?: "Sin correo"
         val fechaNacimiento = bundle?.getString("Fecha_nacimiento") ?: "Sin fecha"
         val nombreUsuario = bundle?.getString("Nombre_usuario") ?: "Sin nombre"
         val telefono = bundle?.getString("Telefono") ?: "Sin teléfono"
 
-        // Configurar vista con datos
         setup(email,fechaNacimiento, nombreUsuario, telefono)
     }
 

@@ -82,6 +82,13 @@ class PantallaPrincipal : AppCompatActivity() {
             intent.putExtra("SELECTED_DATE", selectedDate)
             startActivity(intent)
         }
+        val bundle = intent.extras
+        val email = intent.getStringExtra("email") ?: "Sin correo"
+        val fechaNacimiento = bundle?.getString("Fecha_nacimiento") ?: "Sin fecha"
+        val nombreUsuario = bundle?.getString("Nombre_usuario") ?: "Sin nombre"
+        val telefono = bundle?.getString("Telefono") ?: "Sin teléfono"
+
+        setup(email,fechaNacimiento, nombreUsuario, telefono)
     }
 
     private fun formatDate(selection: Long?): String {
@@ -144,5 +151,19 @@ class PantallaPrincipal : AppCompatActivity() {
         }
 
         override fun getItemCount(): Int = history.size
+    }
+    private fun setup(email: String, fechaNacimiento: String, nombreUsuario: String, telefono: String) {
+        val emailTextView: TextView = findViewById(R.id.email_text)
+        val nombreCompleto: TextView = findViewById(R.id.nombre_completo)
+        val numeroDeTelefono: TextView = findViewById(R.id.numero_de_telefono)
+        val fechaDeNacimiento: TextView = findViewById(R.id.fecha_de_nacimiento)
+
+        title = "Perfil de Usuario"
+
+        // Asignar valores a las vistas
+        emailTextView.text = email
+        nombreCompleto.text = nombreUsuario
+        numeroDeTelefono.text = telefono
+        fechaDeNacimiento.text = fechaNacimiento
     }
 }
