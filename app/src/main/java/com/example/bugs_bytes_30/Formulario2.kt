@@ -45,11 +45,12 @@ class Formulario2 : AppCompatActivity() {
 
         // Obtén los datos de email y provider del intent
         val bundle = intent.extras
-        val email = bundle?.getString("email")
-        val provider = bundle?.getString("provider")
-        if (email != null && provider != null) {
-            setup(email)
-        }
+        val email = intent.getStringExtra("email") ?: "Sin correo"
+        val fechaNacimiento = bundle?.getString("Fecha_nacimiento") ?: "Sin fecha"
+        val nombreUsuario = bundle?.getString("Nombre_usuario") ?: "Sin nombre"
+        val telefono = bundle?.getString("Telefono") ?: "Sin teléfono"
+
+        setup(email,fechaNacimiento,nombreUsuario,telefono)
     }
 
     private fun setupDatePicker(editText: EditText) {
@@ -68,45 +69,46 @@ class Formulario2 : AppCompatActivity() {
         }
     }
 
-    private fun setup(email: String) {
-        title = "Ingresos/Egresos"
+    private fun setup(email: String, fechaNacimiento: String, nombreUsuario: String, telefono: String) {
+        title = "General"
 
         val textInputEditTextType: EditText = findViewById(R.id.textInputEditText)
         val textInputEditTextAmount: EditText = findViewById(R.id.textInputEditText2)
         val textInputEditTextDate: EditText = findViewById(R.id.textInputEditTextDate)
+        val button_siguiente = findViewById<Button>(R.id.button_siguiente)
 
-        val buttonGuardarIngreso = findViewById<Button>(R.id.button_siguiente)
-
-        buttonGuardarIngreso.setOnClickListener {
+        button_siguiente.setOnClickListener {
             if (textInputEditTextType.text.isNullOrBlank() ||
                 textInputEditTextAmount.text.isNullOrBlank() ||
                 textInputEditTextDate.text.isNullOrBlank()) {
                 Toast.makeText(this, "Por favor, completa todos los campos.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-
-            val monto = textInputEditTextAmount.text.toString().toDoubleOrNull()
-            if (monto == null) {
-                Toast.makeText(this, "El monto debe ser un número válido.", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-
             val ingreso = hashMapOf(
-                "Tipo" to textInputEditTextType.text.toString(),
-                "Monto" to monto,
+                "Ingreso Inicial" to textInputEditTextType.text.toString(),
+                "Meta de ahorro" to textInputEditTextAmount.text.toString(),
                 "Fecha" to textInputEditTextDate.text.toString()
             )
-
             db.collection("users")
                 .document(email)
-                .collection("ingresos")
+                .collection("General")
                 .add(ingreso)
                 .addOnSuccessListener {
+                    val intent = Intent(this, PantallaUsuarioActivity::class.java).apply {
+                        putExtra("email", email)
+                        putExtra("Fecha_nacimiento", fechaNacimiento)
+                        putExtra("Nombre_usuario", nombreUsuario)
+                        putExtra("Telefono", telefono)
+                        putExtra("Ingreso Inicial", textInputEditTextType.text.toString())
+                        putExtra("Meta de ahorro", textInputEditTextAmount.text.toString())
+                        putExtra("Fecha", textInputEditTextDate.text.toString())
+
+                    }
                     Toast.makeText(this, "Ingreso guardado correctamente.", Toast.LENGTH_SHORT).show()
                     textInputEditTextType.text.clear()
                     textInputEditTextAmount.text.clear()
                     textInputEditTextDate.text.clear()
-
+                    startActivity(intent)
                 }
                 .addOnFailureListener { e ->
                     Toast.makeText(this, "Error al guardar el ingreso: ${e.message}", Toast.LENGTH_LONG).show()
@@ -114,6 +116,4 @@ class Formulario2 : AppCompatActivity() {
                 }
         }
     }
-
 }
-
