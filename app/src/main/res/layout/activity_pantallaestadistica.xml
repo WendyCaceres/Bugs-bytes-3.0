@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F8F9FA"
+    tools:context=".pantallaestadistica">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#B3E5FC"
+        android:padding="16dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tv_greeting"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Hola!\nSebastian"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total\n0 Bs"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gastos (última semana)"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:textSize="16sp" />
+
+    <ProgressBar
+        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
+        android:id="@+id/progressSemanal"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_margin="16dp"
+        android:progress="0"
+        android:max="100"
+        android:progressDrawable="@android:color/holo_blue_dark" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gastos por categoría (en el mes actual)"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginStart="16dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Pasajes -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Pasajes"
+                android:textColor="#000000" />
+            <ProgressBar
+                android:id="@+id/progressPasajes"
+                style="@android:style/Widget.DeviceDefault.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:layout_weight="2"
+                android:progress="0"
+                android:max="100"
+                android:progressDrawable="@android:color/holo_red_dark" />
+            <TextView
+                android:id="@+id/tvPasajes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 Bs"
+                android:textColor="#000000" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom"
+        android:background="#9000FF"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/botoninicio"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/home_24dp_e8eaed_fill0_wght400_grad0_opsz24"
+            android:background="#9000FF" />
+
+        <ImageButton
+            android:id="@+id/botonestadistica"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/analytics_24dp_e8eaed_fill0_wght400_grad0_opsz24"
+            android:background="#9000FF" />
+
+        <ImageButton
+            android:id="@+id/botonperfil"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/person_24dp_e8eaed_fill0_wght400_grad0_opsz24"
+            android:background="#9000FF" />
+    </LinearLayout>
+
+</LinearLayout>

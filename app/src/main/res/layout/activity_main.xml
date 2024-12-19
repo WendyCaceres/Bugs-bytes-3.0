@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -11,7 +11,7 @@
     <LinearLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="122dp"
+        android:layout_height="wrap_content"
         android:background="#9000FF"
         android:gravity="center_vertical"
         android:orientation="horizontal"
@@ -22,7 +22,6 @@
             android:id="@+id/textview"
             android:layout_width="243dp"
             android:layout_height="wrap_content"
-            android:elevation="4dp"
             android:paddingEnd="4dp"
             android:layout_marginStart="10dp"
             android:text="BIENVENIDO A TU ASISTENTE FINANCIERO"
@@ -34,7 +33,7 @@
             android:layout_height="90dp"
             android:layout_marginStart="24dp"
             android:elevation="8dp"
-            android:src="@drawable/finanza" />
+            android:src="@drawable/ic_launcher_foreground" />
 
     </LinearLayout>
     <LinearLayout
@@ -63,13 +62,19 @@
         android:layout_marginTop="64dp"
         android:layout_marginEnd="32dp"
         android:hint="Nombre Completo"
+        android:textColorHint="#646464"
         app:helperText="*obligatorio*"
-        app:helperTextTextColor="#ff0000"
         app:counterEnabled="true"
-        app:counterMaxLength="20"
+        app:counterMaxLength="9"
         app:endIconMode="clear_text"
-        app:prefixText="+591 "
-        app:prefixTextColor="#9000FF"
+        app:hintTextColor="#723185"
+        app:cursorColor="#723185"
+        app:helperTextTextColor="#ff0000"
+        app:boxStrokeColor="#723185"
+        app:errorTextColor="#ff0000"
+        app:counterOverflowTextColor="@color/black"
+        app:counterTextColor="@color/black"
+        android:textColor="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/texto_introduccion">
@@ -77,8 +82,9 @@
             android:id="@+id/textInputEditText"
             android:maxLength="25"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:textColor="@android:color/black"/>
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            />
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -86,16 +92,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="90dp"
         android:layout_marginEnd="32dp"
         android:hint="Correo Electronico"
+        android:textColorHint="#646464"
         app:helperText="*obligatorio*"
-        app:helperTextTextColor="#ff0000"
         app:counterEnabled="true"
         app:counterMaxLength="20"
         app:endIconMode="clear_text"
-        app:prefixText="+591 "
-        app:prefixTextColor="#9000FF"
+        app:hintTextColor="#723185"
+        app:cursorColor="#723185"
+        app:helperTextTextColor="#ff0000"
+        app:boxStrokeColor="#723185"
+        app:errorTextColor="#ff0000"
+        app:counterOverflowTextColor="@color/black"
+        app:counterTextColor="@color/black"
+        android:textColor="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textInputLayout">
@@ -103,24 +115,34 @@
             android:id="@+id/textInputEditText2"
             android:maxLength="25"
             android:layout_width="match_parent"
-            android:layout_height="40dp"/>
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"/>
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:id="@+id/textInputLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="90dp"
         android:layout_marginEnd="32dp"
         android:hint="Numero Celular"
+        android:textColorHint="#646464"
         app:helperText="*obligatorio*"
-        app:helperTextTextColor="#ff0000"
         app:counterEnabled="true"
         app:counterMaxLength="20"
         app:endIconMode="clear_text"
         app:prefixText="+591 "
-        app:prefixTextColor="#9000FF"
+        app:prefixTextColor="#000000"
+        app:hintTextColor="#723185"
+        app:cursorColor="#723185"
+        app:helperTextTextColor="#ff0000"
+        app:boxStrokeColor="#723185"
+        app:errorTextColor="#ff0000"
+        app:counterOverflowTextColor="@color/black"
+        app:counterTextColor="@color/black"
+        android:textColor="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textInputLayout2">
@@ -128,7 +150,8 @@
             android:id="@+id/textInputEditText3"
             android:maxLength="25"
             android:layout_width="match_parent"
-            android:layout_height="40dp"/>
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"/>
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -136,49 +159,38 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="90dp"
         android:layout_marginEnd="32dp"
         android:hint="Fecha de Nacimiento"
+        android:textColorHint="#646464"
         app:helperText="*obligatorio*"
-        app:helperTextTextColor="#ff0000"
-        app:endIconMode="custom"
-        app:endIconDrawable="@drawable/ic_launcher_foreground"
         app:endIconContentDescription="Seleccionar fecha"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textInputLayout3">
+        app:layout_constraintTop_toTopOf="@+id/textInputLayout3"
+        app:helperTextTextColor="#ff0000"
+        app:boxStrokeColor="#723185"
+        app:counterOverflowTextColor="@color/black"
+        app:counterTextColor="@color/black"
+        android:textColor="@android:color/black">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textInputEditTextDate"
             android:focusable="false"
             android:clickable="true"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:hint="DD/MM/YYYY"/>
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-        android:id="@+id/textInputLayout4"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="100dp"
-        android:hint="agregar FOTO"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textInputLayoutDate">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInputEditText4"
-            android:layout_width="120dp"
-            android:layout_height="120dp"/>
-    </com.google.android.material.textfield.TextInputLayout>
+
     <Button
         android:id="@+id/button_siguiente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:layout_marginEnd="24dp"
-        android:text="SIGUIENTE"
+        android:text="Siguiente"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 

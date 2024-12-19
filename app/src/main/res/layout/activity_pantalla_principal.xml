@@ -7,7 +7,6 @@
     android:orientation="vertical"
     tools:context=".PantallaPrincipal">
 
-    <!-- Contenido principal -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -29,7 +28,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/tvUserName"
+                    android:id="@+id/nombreinicio"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -39,7 +38,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tvTotalAmount"
+                    android:id="@+id/montototal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Total\n1872.20 Bs"
@@ -64,7 +63,7 @@
                 android:layout_height="wrap_content">
 
                 <Button
-                    android:id="@+id/btnAddIncome"
+                    android:id="@+id/botoningresos"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -73,7 +72,7 @@
                     android:textColor="#FFFFFF" />
 
                 <Button
-                    android:id="@+id/btnAddExpense"
+                    android:id="@+id/botonegresos"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -93,7 +92,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/tvExpenses"
+                    android:id="@+id/textoegresos"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Egresos de este mes: Bs.500.00"
@@ -101,7 +100,7 @@
                     android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/tvSavings"
+                    android:id="@+id/total"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Ahorros totales: Bs.1,500.00"
@@ -111,12 +110,13 @@
 
                 <ProgressBar
                     android:id="@+id/progressBar"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:progress="0"
+                    style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:indeterminate="false"
                     android:max="100"
+                    android:progress="50"
                     android:progressDrawable="@drawable/circular_progress" />
             </LinearLayout>
 
@@ -128,50 +128,53 @@
                 android:textStyle="bold"
                 android:layout_marginTop="16dp" />
 
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_marginTop="8dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/etSearchDate"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:hint="DD/MM/AAAA"
-                    android:inputType="none"
-                    android:textSize="16sp"
-                    android:padding="14dp" />
-                <ImageButton
-                    android:id="@+id/btnSearch"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="8dp"
-                    android:src="@drawable/ic_search"
-                    android:contentDescription="Buscar"
-                    android:background="?android:attr/selectableItemBackground"
-                    android:scaleType="centerInside"
-                    android:padding="8dp" />
-            </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvHistory"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayoutDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                tools:listitem="@layout/item_historial" />
+                android:hint="Seleccionar fecha">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textInputEditTextDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:clickable="true"
+                    android:textColor="@android:color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewHistory"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp" />
         </LinearLayout>
     </ScrollView>
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        app:menu="@menu/bottom_nav_menu"
-        app:labelVisibilityMode="labeled"
-        android:background="?android:attr/windowBackground"
-        app:itemIconTint="@menu/nav_item_color"
-        app:itemTextColor="@menu/nav_item_color" />
-</LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="#9000FF">
+
+        <ImageButton
+            android:id="@+id/botoninicio"
+            android:layout_width="140dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/home_24dp_e8eaed_fill0_wght400_grad0_opsz24"
+            android:background="#9000FF"/>
+        <ImageButton
+            android:id="@+id/botonestadistica"
+            android:layout_width="140dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/analytics_24dp_e8eaed_fill0_wght400_grad0_opsz24"
+            android:background="#9000FF"/>
+        <ImageButton
+            android:id="@+id/botonperfil"
+            android:layout_width="140dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/person_24dp_e8eaed_fill0_wght400_grad0_opsz24"
+            android:background="#9000FF"/>
+    </LinearLayout>
+</LinearLayout>

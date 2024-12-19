@@ -19,7 +19,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
         <TextView
-            android:id="@+id/textview"
+            android:id="@+id/textoinicio"
             android:layout_width="243dp"
             android:layout_height="wrap_content"
             android:paddingEnd="4dp"
@@ -28,7 +28,7 @@
             android:textColor="@android:color/black"
             android:textSize="24sp" />
         <ImageView
-            android:id="@+id/view_icon"
+            android:id="@+id/iconoapp"
             android:layout_width="90dp"
             android:layout_height="90dp"
             android:layout_marginStart="24dp"
@@ -54,9 +54,6 @@
             android:textSize="18sp"/>
     </LinearLayout>
 
-
-
-    <!-- Input to Add New Categories -->
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:id="@+id/textInputLayout"
@@ -93,7 +90,6 @@
         app:layout_constraintStart_toStartOf="@id/textInputLayout"
         app:layout_constraintTop_toBottomOf="@id/textInputLayout" />
 
-    <!-- Dynamic Category List -->
     <LinearLayout
         android:id="@+id/categoryList"
         android:layout_width="match_parent"
@@ -103,7 +99,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/addCategoryButton" />
 
-    <!-- Footer Section -->
     <Button
         android:id="@+id/botton_atras"
         android:layout_width="wrap_content"
