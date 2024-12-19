@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#B3D4D8"
+    tools:context=".PantallaUsuarioActivity">
+
+    <LinearLayout
+        android:id="@+id/imagen_de_fondo"
+        android:layout_width="match_parent"
+        android:layout_height="290dp"
+        android:orientation="vertical"
+        android:background="@drawable/asistentefinanciero"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:src="@drawable/account_circle_24dp_e8eaed_fill0_wght400_grad0_opsz24"
+        android:contentDescription="Editar perfil"
+        android:scaleType="centerCrop"
+        android:background="@drawable/circel_shape"
+        app:layout_constraintTop_toTopOf="@+id/imagen_de_fondo"
+        app:layout_constraintStart_toStartOf="@+id/imagen_de_fondo"
+        app:layout_constraintEnd_toEndOf="@+id/imagen_de_fondo"
+        app:layout_constraintBottom_toBottomOf="@+id/imagen_de_fondo"
+        android:layout_marginBottom="40dp" />
+
+    <Button
+        android:id="@+id/boton_editar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EDITAR"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@id/imagen_de_fondo"
+        app:layout_constraintEnd_toEndOf="@id/imagen_de_fondo"
+        app:layout_constraintTop_toTopOf="@id/imagen_de_fondo"
+        app:layout_constraintBottom_toBottomOf="@id/imagen_de_fondo"
+        android:layout_marginTop="160dp" />
+
+    <TextView
+        android:id="@+id/texto_nombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="20dp"
+        android:text="Nombre Completo"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@+id/imagen_de_fondo"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/nombre_completo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="8dp"
+        android:text="Tu nombre aquí"
+        android:textSize="16sp"
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@+id/texto_nombre" />
+
+    <TextView
+        android:id="@+id/texto_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="20dp"
+        android:text="Correo Electronico"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@+id/nombre_completo"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/email_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="8dp"
+        android:text="correo@ejemplo.com"
+        android:textSize="16sp"
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@+id/texto_email" />
+
+    <TextView
+        android:id="@+id/texto_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="20dp"
+        android:text="Numero de Telefono"
+        android:textSize="18sp"
+
+        app:layout_constraintTop_toBottomOf="@+id/email_text"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/numero_de_telefono"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="8dp"
+        android:text="+1234567890"
+        android:textSize="16sp"
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@+id/texto_num" />
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="20dp"
+        android:text="Fecha de nacimiento"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@+id/numero_de_telefono"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/fecha_de_nacimiento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="8dp"
+        android:text="01/01/2000"
+        android:textSize="16sp"
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@+id/email" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#9000FF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <ImageButton
+            android:id="@+id/botoninicio"
+            android:layout_width="140dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/home_24dp_e8eaed_fill0_wght400_grad0_opsz24"
+            android:contentDescription="Inicio"
+            android:background="#9000FF" />
+        <ImageButton
+            android:id="@+id/botonestadistica"
+            android:layout_width="140dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/analytics_24dp_e8eaed_fill0_wght400_grad0_opsz24"
+            android:contentDescription="Estadísticas"
+            android:background="#9000FF" />
+        <ImageButton
+            android:id="@+id/botonperfil"
+            android:layout_width="140dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/person_24dp_e8eaed_fill0_wght400_grad0_opsz24"
+            android:contentDescription="Perfil"
+            android:background="#9000FF" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
