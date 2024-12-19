@@ -27,7 +27,7 @@ class Formulario3 : AppCompatActivity() {
             view.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val buttonSiguiente=findViewById<Button>(R.id.botton_terminar)
+        val buttonSiguiente = findViewById<Button>(R.id.botton_terminar)
         buttonSiguiente.setOnClickListener {
             val intent = Intent(this, PantallaPrincipal::class.java)
             startActivity(intent)
@@ -52,6 +52,14 @@ class Formulario3 : AppCompatActivity() {
                 textInputEditText.error = "Por favor, ingrese un nombre válido"
             }
         }
+        val bundle = intent.extras
+        val email = intent.getStringExtra("email") ?: "Sin correo"
+        val fechaNacimiento = intent.getStringExtra("Fecha_nacimiento") ?: "Sin fecha"
+        val nombreUsuario = bundle?.getString("Nombre_usuario") ?: "Sin nombre"
+        val telefono = bundle?.getString("Telefono") ?: "Sin teléfono"
+        val Ingreso_inicial = bundle?.getString("Telefono") ?: "Sin teléfono"
+        val Meta_ahorro = bundle?.getString("Meta de ahorro") ?: "Sin teléfono"
+        val fecha = bundle?.getString("Fecha") ?: "Sin teléfono"
     }
 
     private fun addCategory(parent: LinearLayout, categoryName: String) {
