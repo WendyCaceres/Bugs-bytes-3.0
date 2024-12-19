@@ -68,7 +68,7 @@ class PantallaPrincipal : AppCompatActivity() {
         }
 
         binding.botonestadistica.setOnClickListener {
-            val intent = Intent(this, pantallaestadistica::class.java)
+            val intent = Intent(this, PantallaEstadistica::class.java)
             startActivity(intent)
         }
     }

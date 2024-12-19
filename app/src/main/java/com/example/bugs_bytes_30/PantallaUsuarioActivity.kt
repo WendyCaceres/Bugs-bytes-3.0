@@ -29,7 +29,7 @@ class PantallaUsuarioActivity : AppCompatActivity() {
             startActivity(intent)
         }
         botonestadistica.setOnClickListener {
-            val intent = Intent(this, pantallaestadistica::class.java)
+            val intent = Intent(this, PantallaEstadistica::class.java)
             startActivity(intent)
         }
     }
