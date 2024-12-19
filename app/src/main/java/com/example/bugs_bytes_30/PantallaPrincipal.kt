@@ -4,6 +4,7 @@ import com.google.android.material.datepicker.MaterialDatePicker
 import java.text.SimpleDateFormat
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,7 +22,7 @@ class PantallaPrincipal : AppCompatActivity() {
         "26/11/2024 - TOTAL: 100Bs",
         "27/11/2024 - TOTAL: 192Bs",
         "28/11/2024 - TOTAL: 210Bs",
-        "29/11/2024 - TOTAL: 200Bs",
+        "29/11/2024 - TOTAL: 112Bs",
         "30/11/2024 - TOTAL: 85Bs"
     )
     private var filteredHistoryList = historyList.toMutableList()
@@ -61,6 +62,10 @@ class PantallaPrincipal : AppCompatActivity() {
             updateStatistics()
             binding.recyclerViewHistory.adapter?.notifyDataSetChanged()
         }
+        binding.txtFechaSeleccionada.setOnClickListener {
+            val intent = Intent(this, Detallegastos::class.java)
+            startActivity(intent)
+        }
 
         binding.botonperfil.setOnClickListener {
             val intent = Intent(this, PantallaUsuarioActivity::class.java)
@@ -69,6 +74,12 @@ class PantallaPrincipal : AppCompatActivity() {
 
         binding.botonestadistica.setOnClickListener {
             val intent = Intent(this, PantallaEstadistica::class.java)
+            startActivity(intent)
+        }
+        binding.txtFechaSeleccionada.setOnClickListener {
+            val selectedDate = binding.textInputEditTextDate.text.toString()
+            val intent = Intent(this, Detallegastos::class.java)
+            intent.putExtra("SELECTED_DATE", selectedDate)
             startActivity(intent)
         }
     }
@@ -99,28 +110,39 @@ class PantallaPrincipal : AppCompatActivity() {
         binding.montototal.text = "Total\n${"%.2f".format(total)} Bs"
     }
 
-
     inner class HistoryAdapter(private val history: List<String>) :
         RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
 
         inner class HistoryViewHolder(itemView: TextView) : RecyclerView.ViewHolder(itemView) {
             val tvItem: TextView = itemView
+
+            init {
+                tvItem.setOnClickListener {
+                    val intent = Intent(this@PantallaPrincipal, Detallegastos::class.java)
+                    startActivity(intent)
+                }
+            }
         }
 
         override fun onCreateViewHolder(parent: android.view.ViewGroup, viewType: Int): HistoryViewHolder {
-            val textView = TextView(parent.context).apply {
+            val button = Button(parent.context).apply {
+                text = "Ver detalle"
+                setTextColor(resources.getColor(android.R.color.holo_blue_dark, null))
                 textSize = 16f
-                setPadding(16, 16, 16, 16)
+                setPadding(16, 8, 16, 8)
             }
-            return HistoryViewHolder(textView)
+            return HistoryViewHolder(button)
         }
+
 
         override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
             holder.tvItem.text = history[position]
+            holder.tvItem.setOnClickListener {
+                val intent = Intent(this@PantallaPrincipal, Detallegastos::class.java)
+                startActivity(intent)
+            }
         }
 
         override fun getItemCount(): Int = history.size
-
-
     }
 }
