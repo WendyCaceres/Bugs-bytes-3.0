@@ -52,5 +52,3 @@ class Ingresos : AppCompatActivity() {
         }
     }
 }
-
-
