@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("com.google.gms.google-services")
+    id("kotlin-kapt")
 }
 
 android {
@@ -52,6 +53,9 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)
+    implementation ("androidx.room:room-runtime:2.5.2")
+    implementation ("androidx.room:room-ktx:2.5.2")
+    kapt ("androidx.room:room-compiler:2.5.2")
     implementation(platform(libs.firebase.bom.v3280))
     implementation(libs.firebase.auth)
     implementation(libs.firebase.auth.ktx)
