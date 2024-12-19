@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#F8F9FA"
-    tools:context=".pantallaestadistica">
+    tools:context=".PantallaEstadistica">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -68,35 +68,40 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Pasajes -->
         <LinearLayout
+            android:id="@+id/categoryList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Pasajes"
-                android:textColor="#000000" />
-            <ProgressBar
-                android:id="@+id/progressPasajes"
-                style="@android:style/Widget.DeviceDefault.ProgressBar.Horizontal"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="2"
-                android:progress="0"
-                android:max="100"
-                android:progressDrawable="@android:color/holo_red_dark" />
-            <TextView
-                android:id="@+id/tvPasajes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0 Bs"
-                android:textColor="#000000" />
+            android:orientation="vertical" >
         </LinearLayout>
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnIngresos"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Ingresos"
+            android:background="#FF9800"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btnEgresos"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Egresos"
+            android:background="#FF5722"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"

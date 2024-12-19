@@ -32,7 +32,7 @@
         android:id="@+id/summary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="29/11/2024        TOTAL: 112 Bs"
+        android:text="18/12/2024        TOTAL: 112 Bs"
         android:textSize="18sp"
         android:gravity="center"
         android:background="#FFFFFF"

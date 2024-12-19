@@ -20,10 +20,10 @@
             android:exported="true" />
         <activity
             android:name=".Egresos"
-            android:exported="false" />
+            android:exported="true" />
         <activity
-            android:name=".ingresos"
-            android:exported="false" />
+            android:name=".Ingresos"
+            android:exported="true" />
         <activity
             android:name=".Formulario2"
             android:exported="true" />

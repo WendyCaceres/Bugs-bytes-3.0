@@ -12,28 +12,27 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.example.bugs_bytes_30.databinding.ActivityFormulario3Binding
 import com.google.android.material.textfield.TextInputEditText
 
 class Formulario3 : AppCompatActivity() {
-    private lateinit var binding: ActivityFormulario3Binding
 
+    private val categories = mutableListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_formulario3)
 
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { view, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             view.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-
-        val buttonSiguiente=findViewById<Button>(R.id.botton_terminar)
+        val buttonSiguiente = findViewById<Button>(R.id.botton_terminar)
         buttonSiguiente.setOnClickListener {
-            val intent = Intent(this, PantallaPrincipal::class.java)
+            val intent = Intent(this, PantallaEstadistica::class.java)
+            intent.putStringArrayListExtra("CATEGORIES", ArrayList(categories))
             startActivity(intent)
         }
         val buttonAtras: Button = findViewById(R.id.botton_atras)

@@ -41,7 +41,7 @@
                     android:id="@+id/montototal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Total\n1872.20 Bs"
+                    android:text="Total\n100.00 Bs"
                     android:textColor="#000000"
                     android:textSize="16sp"
                     android:gravity="end" />
@@ -95,7 +95,7 @@
                     android:id="@+id/textoegresos"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Egresos de este mes: Bs.500.00"
+                    android:text="Egresos de este mes: Bs.100.00"
                     android:textColor="#3F51B5"
                     android:textSize="16sp" />
 
@@ -103,7 +103,7 @@
                     android:id="@+id/total"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ahorros totales: Bs.1,500.00"
+                    android:text="Ahorros totales: Bs.500.00"
                     android:textColor="#388E3C"
                     android:textSize="16sp"
                     android:layout_marginTop="8dp" />
